@@ -25,6 +25,12 @@ public class Planet {
         yLocation = y;
     }
     
+    /**
+    *A toString method that returns the attributes for each planet.
+    *@param none 
+    *@return Information as a String
+    *
+    */
     public String toString(){
         String pInfo = new String();
         pInfo = "";
