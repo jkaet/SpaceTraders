@@ -23,7 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
+import spaceTrader.Universe;
 /**
  *
  * @author Quan
@@ -209,7 +209,9 @@ public class FXMLDocumentController implements Initializable {
           //System.out.println(playerInfo);
           spaceTrader.SpaceTraderMain.players.add(playerInfo);
           System.out.println(spaceTrader.SpaceTraderMain.players.toString());
-          spaceTrader.SpaceTraderMain.replaceSceneContent("FXMLDocument.fxml");
+          spaceTrader.SpaceTraderMain.replaceSceneContent("newScreen.fxml");
+          Universe newU = new Universe();
+          newU.generateUniverse();
         } catch (Exception ex) {
             System.out.println(ex);
         }
