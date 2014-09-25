@@ -244,8 +244,8 @@ public class FXMLDocumentController implements Initializable {
         hardButton.setToggleGroup(myRadioButtons);
         normalButton.setSelected(true);
         }
-    
-               
+  
+        
     }    
     
 }
