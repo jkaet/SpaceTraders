@@ -143,6 +143,15 @@ public class Universe {
         
     }
     
+    /**
+    *Creates a new universe by choosing random attributes for each
+    *planet in the array and adding it to the universe. 
+    *Prints toString for each planet added.
+    *@param none 
+    *@return none
+    *
+    */
+
     public void generateUniverse(){
         Random rand = new Random();
         int xLoc;
