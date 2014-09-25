@@ -11,7 +11,7 @@ import java.util.Random;
 
 /**
  *
- * @author Brandens
+ * @author Branden/Thomas 
  */
 public class Universe {
     private static String[] planet = {
