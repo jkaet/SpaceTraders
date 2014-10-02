@@ -28,10 +28,23 @@ public class Ship {
     public Ship(String ship) {
         name = ship;
     }
-     public boolean checkCount(int check) {
-         return (check <= (maxItems - count));
+     public boolean validBuy(int amount,int cost, int credits) {
+         return (amount <= (maxItems - count))&&cost<=credits;
      }
-     
+       public boolean validSale(int w, int fu, int fo, int o, int g, int fi, int med, int mac, int narc, int rob)
+    {
+        System.out.println((w<=water)&&(fu<=fur)
+                &&(fo<=food)&&(o<=ore)
+                &&(med<=medicine)&&(mac<=machines)
+                &&(rob <= robots) && (narc<=narcotics)
+                &&(g<=games));
+        System.out.println(rob+"   "+robots);
+        return(w<=water)&&(fu<=fur)
+                &&(fo<=food)&&(o<=ore)
+                &&(med<=medicine)&&(mac<=machines)
+                &&(rob <= robots) && (narc<=narcotics)
+                &&(g<=games);
+    }
      public void addCount(int check) {
          count = count + check;
      }

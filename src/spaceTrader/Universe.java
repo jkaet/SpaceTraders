@@ -11,7 +11,7 @@ import java.util.Random;
 
 /**
  *
- * @author Branden/Thomas 
+ * @author Brandens
  */
 public class Universe {
     private static String[] planet = {
@@ -137,21 +137,12 @@ public class Universe {
     "Zuul"			// From the first Ghostbusters movie
 };
     
-    private ArrayList<Planet> universe = new ArrayList<Planet>();
+    public ArrayList<Planet> universe = new ArrayList<Planet>();
     
     public Universe(){
         
     }
     
-    /**
-    *Creates a new universe by choosing random attributes for each
-    *planet in the array and adding it to the universe. 
-    *Prints toString for each planet added.
-    *@param none 
-    *@return none
-    *
-    */
-
     public void generateUniverse(){
         Random rand = new Random();
         int xLoc;
@@ -165,6 +156,7 @@ public class Universe {
             recLevel = rand.nextInt(12);
             Planet newPlanet = new Planet(planet[i], techLevel, recLevel, xLoc, yLoc);
             System.out.println(newPlanet.toString());
+            newPlanet.generateMarket();
             universe.add(newPlanet);
         }
     }

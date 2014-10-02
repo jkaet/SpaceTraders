@@ -21,15 +21,6 @@ import javafx.stage.Stage;
 public class SpaceTraderMain extends Application {
     private static Stage mystage;
     public static ArrayList<Character> players = new ArrayList();
-    
-
-/**
-    *Loads the FMXL Document
-    *@param stage
-    *@return none
-    *
-    */
-
     @Override
     public void start(Stage stage) throws Exception {
         Parent root;
@@ -43,16 +34,11 @@ public class SpaceTraderMain extends Application {
         mystage.show();
         
     }
+ public static Parent replaceSceneContent(String fxml, Object obj) throws Exception {
+        FXMLLoader loader = new FXMLLoader(SpaceTraderMain.class.getResource(fxml));
+        loader.setController(obj);
+        Parent page = (Parent)loader.load();
 
-    /**
-    *Replaces the scene content.
-    *@param fxml as a string 
-    *@return Parent page
-    *
-    */
-
- public static Parent replaceSceneContent(String fxml) throws Exception {
-        Parent page = (Parent) FXMLLoader.load(SpaceTraderMain.class.getResource(fxml), null, new JavaFXBuilderFactory());
         Scene scene;
         scene = mystage.getScene();
         if (scene == null) {

@@ -16,21 +16,21 @@ public class Planet {
     public int resourceLevel;
     public int xLocation;
     public int yLocation;
-    
+    public Market market;
     public Planet(String name, int tec, int res, int x, int y) {
         this.name = name;
         techLevel = tec;
         resourceLevel = res;
         xLocation = x;
         yLocation = y;
+        
+    }
+    public void generateMarket()
+    {
+        market = new Market();
+        market.generatePricesAndQuanities(this);
     }
     
-    /**
-    *A toString method that returns the attributes for each planet.
-    *@param none 
-    *@return Information as a String
-    *
-    */
     public String toString(){
         String pInfo = new String();
         pInfo = "";
