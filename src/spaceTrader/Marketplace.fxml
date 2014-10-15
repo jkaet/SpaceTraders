@@ -12,7 +12,7 @@
       <Button layoutX="59.0" layoutY="514.0" mnemonicParsing="false" onAction="#buy" text="Buy" />
       <Button layoutX="137.0" layoutY="514.0" mnemonicParsing="false" onAction="#sell" text="Sell" />
      
-      <TextField fx:id="gamesNum" layoutX="59.0" layoutY="240.0" prefHeight="26.0" prefWidth="41.0" />
+      <TextField fx:id="gamesNum" layoutX="59.0" layoutY="241.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="firearmsNum" layoutX="59.0" layoutY="287.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="medicineNum" layoutX="59.0" layoutY="325.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="machinesNum" layoutX="59.0" layoutY="365.0" prefHeight="26.0" prefWidth="41.0" />
@@ -22,6 +22,8 @@
       <TextField fx:id="fursNum" layoutX="59.0" layoutY="123.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="foodNum" layoutX="57.0" layoutY="161.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="oreNum" layoutX="57.0" layoutY="204.0" prefHeight="26.0" prefWidth="41.0" />
+      <TextField fx:id="planetSwitch" layoutX="536.0" layoutY="15.0" prefHeight="26.0" prefWidth="41.0" />
+
       <Text fill="WHITE" layoutX="113.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Water">
          <font>
             <Font size="18.0" />
@@ -218,5 +220,8 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <Button fx:id="plan1" layoutX="218.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchPlanet" text="Acamar" />
+      <Button fx:id="plan2" layoutX="296.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchPlanet" text="Calondia" />
+      <Button fx:id="plan3" layoutX="372.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchPlanet" text="Damast" />
    </children>
 </AnchorPane>

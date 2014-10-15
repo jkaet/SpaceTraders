@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="402.0" prefWidth="601.0">
+         <children>
+            <Circle fx:id="planet1" fill="DODGERBLUE" layoutX="72.0" layoutY="135.0" onMouseClicked="#enterMarket" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet2" fill="DODGERBLUE" layoutX="251.0" layoutY="99.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet5" fill="DODGERBLUE" layoutX="153.0" layoutY="219.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet4" fill="DODGERBLUE" layoutX="357.0" layoutY="163.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet7" fill="DODGERBLUE" layoutX="251.0" layoutY="319.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet8" fill="DODGERBLUE" layoutX="72.0" layoutY="311.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet6" fill="DODGERBLUE" layoutX="419.0" layoutY="263.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="planet3" fill="DODGERBLUE" layoutX="447.0" layoutY="93.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

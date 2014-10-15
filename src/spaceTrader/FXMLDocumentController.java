@@ -9,10 +9,12 @@ package spaceTrader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,9 +27,11 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javax.swing.JButton;
-import javafx.scene.control.Button;
 import spaceTrader.Universe;
 /**
  *
@@ -39,6 +43,33 @@ public class FXMLDocumentController implements Initializable {
     private int skill3Points;
     private int skill4Points;
     private String userName;
+    private Universe copyU;
+    private Planet planet;
+    private Planet planett;
+    @FXML
+    private Button plan1;
+    @FXML
+    private Button plan2;
+    @FXML
+    private Button plan3; 
+    @FXML
+    private Circle planet1;
+    @FXML
+    private Circle planet2;
+    @FXML
+    private Circle planet3;
+    @FXML
+    private Circle planet4;
+    @FXML
+    private Circle planet5;
+    @FXML
+    private Circle planet6;
+    @FXML
+    private Circle planet7;
+    @FXML
+    private Circle planet8;
+    @FXML 
+    private Button travelButton;
     @FXML
     private Label numCredits;
     @FXML
@@ -121,7 +152,8 @@ public class FXMLDocumentController implements Initializable {
     private Label cargoSpace;
     @FXML 
     private TextField narcoticsNum;
-    
+    @FXML
+    private TextField planetSwitch;
     @FXML 
     private TextField robotsNum;    
     @FXML 
@@ -158,6 +190,16 @@ public class FXMLDocumentController implements Initializable {
     stage.hide();
 }
     @FXML
+    private void destination() throws Exception{
+        try{
+
+        }catch(Exception e){
+            
+        }
+        
+        
+    }
+    @FXML
     private void newGame(ActionEvent event) throws Exception{
       try {
             spaceTrader.SpaceTraderMain.replaceSceneContent("NewUser.fxml",this);
@@ -178,13 +220,77 @@ public class FXMLDocumentController implements Initializable {
     private void enterMarket(ActionEvent event) throws Exception{
       try {
             spaceTrader.SpaceTraderMain.replaceSceneContent("Marketplace.fxml",this);
-                     updateMarket();
-
-        
+            System.out.println(newU.universe);
+            updateMarket();
+            copyU = new Universe();
+            copyU.universe =newU.getCopy();
+            Color y = Color.BLUE;
+            plan1.setStyle("-fx-base: #b6e7c9;");
+            plan2.setStyle("-fx-base: #FFFFFF ;");
+            plan3.setStyle("-fx-base: #FFFFFF ;");
         } catch (Exception ex) {
             System.out.println(ex);
         }
+      
     }
+    @FXML
+    private void enterU(ActionEvent event) throws Exception{
+          try{
+            spaceTrader.SpaceTraderMain.replaceSceneContent("destination.fxml",this);
+        }     
+        catch(Exception e){ 
+           
+            System.out.println(e);
+        }   
+    }
+    @FXML 
+    private void curPlanet(ActionEvent event) throws Exception
+    {
+        try{
+       planet1.setStroke(Color.BLACK);
+            planet2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            //@Override
+            public void handle(MouseEvent event) {
+            System.out.println("mouse click detected! "+event.getSource());
+            Circle x = (Circle)event.getSource();
+            x.setStroke(Color.BLACK);
+            System.out.println(x);
+            planet2 = x;
+    }});
+            }catch(Exception e){
+                    
+                    }
+    }
+    @FXML 
+    //Allows you to switch planets
+    private void switchPlanet(ActionEvent event) throws Exception
+    {
+        Button pressed = (Button)event.getSource();
+        String y = pressed.getId();
+        System.out.println(y);
+        if(y.equals("plan1")){
+            plan1.setStyle("-fx-base: #b6e7c9;");
+            plan2.setStyle("-fx-base: #FFFFFF ;");
+            plan3.setStyle("-fx-base: #FFFFFF ;");}
+        if(y.equals("plan2")){
+            plan2.setStyle("-fx-base: #b6e7c9;");
+            plan1.setStyle("-fx-base: #FFFFFF ;");
+            plan3.setStyle("-fx-base: #FFFFFF ;");}
+        if(y.equals("plan3")){
+            plan3.setStyle("-fx-base: #b6e7c9;");
+            plan2.setStyle("-fx-base: #FFFFFF ;");
+            plan1.setStyle("-fx-base: #FFFFFF ;");}
+        String buttonText = pressed.getText();
+        int index=0;
+        for(Planet p: copyU.universe)
+            if(p.name.equals(buttonText))
+                index = copyU.universe.indexOf(p);
+        Planet p = copyU.universe.get(index);
+        newU.universe.set(0,p);
+        updateMarket();
+    }
+    
+           
     
 @FXML
     private void addSkill1(ActionEvent event) throws Exception{
@@ -306,6 +412,7 @@ public class FXMLDocumentController implements Initializable {
           {
               robotsNum.setText(""+(newU.universe.get(0).market.robotsQuant/2));
           }
+         
       } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -456,6 +563,19 @@ public class FXMLDocumentController implements Initializable {
               playerInfo.myShip.machines -= machines;
               playerInfo.myShip.narcotics -= narcotics;
               playerInfo.myShip.robots -= robots;
+          }
+           if(!planetSwitch.getText().equals(""))
+          {
+              if(Integer.parseInt(planetSwitch.getText())>=0 && Integer.parseInt(planetSwitch.getText())<=8 )
+              {
+                  planet =  newU.universe.get(Integer.parseInt(planetSwitch.getText())-1);
+                  if(!planet.equals(planett)){
+                    Collections.swap(newU.universe, 0, Integer.parseInt(planetSwitch.getText())-1);
+                    planett = newU.universe.get(0);
+                    planetSwitch.setText("");
+                    System.out.println("Current Planet:" +planet.name +" Choose 1-8 to move planets");
+                  }
+              }
           }
           updateMarket();
       } catch (Exception ex) {
@@ -742,6 +862,7 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         dictionaryPoints = new HashMap<String, Integer>();
         dictionaryLabel = new HashMap<String, TextArea>();
         dictionaryPoints.put("skill1Minus",1);
@@ -759,8 +880,7 @@ public class FXMLDocumentController implements Initializable {
         hardButton.setToggleGroup(myRadioButtons);
         normalButton.setSelected(true);
         }
-    
-               
-    }    
+        
+    }
     
 }

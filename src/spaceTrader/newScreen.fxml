@@ -9,5 +9,6 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="marketPlaceButton" layoutX="41.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterMarket" text="MARKETPLACE" />
+      <Button fx:id="travelButton" layoutX="151.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterU" text="TRAVEL" />
    </children>
 </AnchorPane>

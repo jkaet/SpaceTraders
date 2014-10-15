@@ -137,7 +137,7 @@ public class Universe {
     "Zuul"			// From the first Ghostbusters movie
 };
     
-    public ArrayList<Planet> universe = new ArrayList<Planet>();
+    public ArrayList<Planet> universe = new ArrayList<>();
     
     public Universe(){
         
@@ -159,6 +159,13 @@ public class Universe {
             newPlanet.generateMarket();
             universe.add(newPlanet);
         }
+    }
+    public ArrayList<Planet> getCopy()
+    {
+        ArrayList<Planet> x = new ArrayList<>(universe.size());
+        for(Planet item: universe) x.add(item);
+
+        return x;
     }
 
 }
