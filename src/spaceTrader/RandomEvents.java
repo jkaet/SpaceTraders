@@ -2,8 +2,10 @@ package spaceTrader;
 
 import java.util.Random;
 
-
-
+/**
+ *
+ * @author Thomas
+ */
 public class RandomEvents {
 
 
@@ -17,14 +19,27 @@ public class RandomEvents {
 	*
 	*/
         Character player;
-	public RandomEvents(Character player){
+
+    /**
+     * Constructor that allows the class to act against the user
+     * 
+     * 
+     * @param player
+     */
+    public RandomEvents(Character player){
 		this.player = player;
 	}
 
-	public void findMoney(){
+    /**
+     * Doesn't return anything. Just a random event to happen to
+     * a player on any given turn. Player's money will increase by some 
+     * number of credits between 0 and 6000.
+     * 
+     */
+    public void findMoney(){
 	
             Random rand = new Random();
-            int cash = rand.nextInt(601);
+            int cash = rand.nextInt(6001);
 
             player.credits += cash;
 
@@ -32,10 +47,16 @@ public class RandomEvents {
 
 	}
 
-	public void getRobbed(){
+    /**
+     * Doesn't return anything. Just a random event to happen to 
+     * a player on any given turn. Player's money will decrease by some
+     * number of credits between 0 and 5100
+     * 
+     */
+    public void getRobbed(){
 
             Random rand = new Random();
-            int stolenMoney = rand.nextInt(5100);
+            int stolenMoney = rand.nextInt(5101);
 
             if(player.credits < stolenMoney){
                     player.credits = 0;
@@ -48,22 +69,43 @@ public class RandomEvents {
 
 	}
 
-	public void runAway(){
+    /**
+     * Doesn't return anything. This is an event that can happen to a 
+     * player in the event that he/she gets pulled over. This option allows the user
+     * a 50% chance to attempt get out of having their narcotics confiscated.
+     * However, if he/she get caught they lose their narcotics and their money.
+     * 
+     * 
+     */
+    public void runAway(){
+        Random rand = new Random();
+        int temp = rand.nextInt(51);
+        
+        if(temp > 26){
+            player.credits = 0;
+            player.myShip.narcotics = 0;  
+         }
 
-            int fine = 2500;
-
-            player.credits -= fine;
-            player.myShip.narcotics = 0;
-
-            System.out.println("You got caught speeding and got pulled over. The fine is " + fine +" credits.");
 
 	}
         
-        public void stay(){
+    /**
+     * Doesn't return anything. This is an event that can happen to a player
+     * in the event that he/she gets pulled over. This option allows the user to
+     * simply lose his/her narcotics with no further consequences. 
+     * 
+     * 
+     */
+    public void stay(){
             player.myShip.narcotics = 0;
         }
 
-	public void loseCargo(){
+    /**
+     * Doesn't return anything. Just a random event to happen a player on any
+     * given turn. Player loses all of one item on the ship. 
+     * 
+     */
+    public void loseCargo(){
 
             Random rand = new Random();
             int item = rand.nextInt(11);
