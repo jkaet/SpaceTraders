@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -219,6 +220,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void enterMarket(ActionEvent event) throws Exception{
       try {
+            Random rand = new Random();
+            if (rand.nextInt(10) > 1) {
+                spaceTrader.SpaceTraderMain.replaceSceneContent("Police.fxml",PoliceController.class);
+            }
             spaceTrader.SpaceTraderMain.replaceSceneContent("Marketplace.fxml",this);
             System.out.println(newU.universe);
             updateMarket();
