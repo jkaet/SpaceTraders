@@ -56,6 +56,14 @@ public class Market
         oresQuant = 0;
         firearmsQuant = 0;
     }
+
+    /**
+    * Generates random prices and quantities for the marketplace 
+    * of a planet.
+    *@return void
+    *@param Planet
+    */
+
     public void generatePricesAndQuanities(Planet p)
     {
         Random rand = new Random();
@@ -80,6 +88,13 @@ public class Market
         narcoticsQuant = (125 * p.techLevel) ;
         robotsQuant = (8 * p.techLevel);
     }
+
+    /**
+    * Checks if prices are less than or equal to quantity 
+    * @param prices 
+    * @return boolean true or false 
+    */
+    
     public boolean isValid(int w, int fu, int fo, int o, int g, int fi, int med, int mac, int narc, int rob)
     {
         return(w<=waterQuant)&&(fu<=fursQuant)
