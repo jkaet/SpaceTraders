@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * Generates Universe with all planets
  *
  * @author Brandens
  */
@@ -143,6 +144,13 @@ public class Universe {
         
     }
     
+    /**
+    *Generates new universe with random coordinates for each
+    *planet and prints toString of each new planet. 
+    *new market is generated for each planet
+    *@return void
+    */
+
     public void generateUniverse(){
         Random rand = new Random();
         int xLoc;
@@ -160,6 +168,12 @@ public class Universe {
             universe.add(newPlanet);
         }
     }
+    
+    /** 
+    *Copies universe's planets into array list
+    *@return ArrayList
+    */
+
     public ArrayList<Planet> getCopy()
     {
         ArrayList<Planet> x = new ArrayList<>(universe.size());

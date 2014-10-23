@@ -7,7 +7,8 @@
 package spaceTrader;
 
 /**
- *
+ * Planet class holds info about planet and generates
+ *new market 
  * @author Brandens
  */
 public class Planet {

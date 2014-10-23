@@ -7,6 +7,7 @@
 package spaceTrader;
 
 /**
+ *Ship class checks for valid buys and sales 
  *
  * @author Brandens
  */
@@ -25,12 +26,30 @@ public class Ship {
     public String name;
     public int count = 0;
     
+    /**
+    *Constructor that sets name of ship
+    *@param String ship's name
+    */
     public Ship(String ship) {
         name = ship;
     }
+
+    /**
+    *Checks if buy is valid
+    *@param amount, cost, credits 
+    *@return boolean 
+    */
+
      public boolean validBuy(int amount,int cost, int credits) {
          return (amount <= (maxItems - count))&&cost<=credits;
      }
+    
+    /**
+    *Checks if sale is valid
+    *@param quantities of player's items
+    *@return boolean 
+    */ 
+    
        public boolean validSale(int w, int fu, int fo, int o, int g, int fi, int med, int mac, int narc, int rob)
     {
         System.out.println((w<=water)&&(fu<=fur)
@@ -45,6 +64,13 @@ public class Ship {
                 &&(rob <= robots) && (narc<=narcotics)
                 &&(g<=games);
     }
+
+    /**
+    *adds to the amount of total goods
+    *@param check
+    *@return void
+    */
+
      public void addCount(int check) {
          count = count + check;
      }
