@@ -25,12 +25,23 @@ public class Planet {
         yLocation = y;
         
     }
+
+/**
+*Generates new Market with random prices and quantities
+*@return none
+*
+*/    
     public void generateMarket()
     {
         market = new Market();
         market.generatePricesAndQuanities(this);
     }
     
+/**
+*Returns string with planet name and attributes
+*@return String
+*
+*/        
     public String toString(){
         String pInfo = new String();
         pInfo = "";
