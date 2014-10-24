@@ -14,17 +14,17 @@
             <Font name="Helvetica" size="54.0" />
          </font>
       </Text>
-      <Button layoutX="241.0" layoutY="140.0" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black; -fx-border-color: white;" text="New Game" textFill="WHITE" onAction="#newGame" fx:id="newGame" >
+      <Button fx:id="newGame" layoutX="241.0" layoutY="140.0" onAction="#newGame" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black; -fx-border-color: white;" text="New Game" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="loadGame" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-border-color: white;" text="Load Game" textFill="WHITE">
+      <Button fx:id="loadGame" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" onAction="#loadGame" style="-fx-background-color: black; -fx-border-color: white;" text="Load Game" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-           <Button layoutX="241.0" layoutY="259.0" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black; -fx-border-color: white;" text="Exit Game" textFill="WHITE" onAction="#closeWindow" fx:id="exitGame" >
+           <Button fx:id="exitGame" layoutX="241.0" layoutY="259.0" onAction="#closeWindow" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black; -fx-border-color: white;" text="Exit Game" textFill="WHITE">
         <font>
             <Font size="18.0" />
          </font>

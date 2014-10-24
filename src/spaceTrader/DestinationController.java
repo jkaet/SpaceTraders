@@ -39,7 +39,11 @@ import javafx.scene.shape.*;
 
 public class DestinationController implements Initializable {
     
-public void start() throws Exception
+    /**
+     *
+     * @throws Exception
+     */
+    public void start() throws Exception
 {
    
 spaceTrader.SpaceTraderMain.replaceSceneContent("destination",this);

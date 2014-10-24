@@ -6,6 +6,7 @@
 
 package spaceTrader;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ import java.util.Random;
  *
  * @author Brandens
  */
-public class Universe {
+public class Universe implements Serializable{
     private static String[] planet = {
     "Acamar",
     "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
@@ -137,12 +138,21 @@ public class Universe {
     "Zuul"			// From the first Ghostbusters movie
 };
     
+    /**
+     *
+     */
     public ArrayList<Planet> universe = new ArrayList<>();
     
+    /**
+     *
+     */
     public Universe(){
         
     }
     
+    /**
+     *Generates each planet for the Universe
+     */
     public void generateUniverse(){
         Random rand = new Random();
         int xLoc;
@@ -150,8 +160,8 @@ public class Universe {
         int techLevel;
         int recLevel;
         for(int i = 0; i < planet.length; i++){
-            xLoc = rand.nextInt(151);
-            yLoc = rand.nextInt(101);
+            xLoc = rand.nextInt(601);
+            yLoc = rand.nextInt(401);
             techLevel = rand.nextInt(8);
             recLevel = rand.nextInt(12);
             Planet newPlanet = new Planet(planet[i], techLevel, recLevel, xLoc, yLoc);
@@ -160,11 +170,23 @@ public class Universe {
             universe.add(newPlanet);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Planet> getCopy()
     {
         ArrayList<Planet> x = new ArrayList<>(universe.size());
         for(Planet item: universe) x.add(item);
 
+        return x;
+    }
+    public String toString()
+    {
+        String x = new String();
+        for(Planet p: universe)
+            x += p.toString();
         return x;
     }
 

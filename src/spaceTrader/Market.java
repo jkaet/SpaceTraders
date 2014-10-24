@@ -13,26 +13,110 @@ import java.util.Random;
  */
 public class Market
 {
+
+    /**
+     *
+     */
     public int waterPrice;
+
+    /**
+     *
+     */
     public int robotsPrice;
+
+    /**
+     *
+     */
     public int machinesPrice;
+
+    /**
+     *
+     */
     public int narcoticsPrice;
+
+    /**
+     *
+     */
     public int fursPrice;
+
+    /**
+     *
+     */
     public int medicinePrice;
+
+    /**
+     *
+     */
     public int foodPrice;
+
+    /**
+     *
+     */
     public int gamesPrice;
+
+    /**
+     *
+     */
     public int oresPrice;
+
+    /**
+     *
+     */
     public int firearmsPrice;
+
+    /**
+     *
+     */
     public int waterQuant;
+
+    /**
+     *
+     */
     public int robotsQuant;
+
+    /**
+     *
+     */
     public int machinesQuant;
+
+    /**
+     *
+     */
     public int narcoticsQuant;
+
+    /**
+     *
+     */
     public int fursQuant;
+
+    /**
+     *
+     */
     public int medicineQuant;
+
+    /**
+     *
+     */
     public int foodQuant;
+
+    /**
+     *
+     */
     public int gamesQuant;
+
+    /**
+     *
+     */
     public int oresQuant;
+
+    /**
+     *
+     */
     public int firearmsQuant;
+
+    /**
+     *
+     */
     public Market()
     {
         waterPrice = 0;
@@ -56,6 +140,11 @@ public class Market
         oresQuant = 0;
         firearmsQuant = 0;
     }
+
+    /**
+     *
+     * @param p
+     */
     public void generatePricesAndQuanities(Planet p)
     {
         Random rand = new Random();
@@ -80,6 +169,21 @@ public class Market
         narcoticsQuant = (125 * p.techLevel) ;
         robotsQuant = (8 * p.techLevel);
     }
+
+    /**
+     *
+     * @param w
+     * @param fu
+     * @param fo
+     * @param o
+     * @param g
+     * @param fi
+     * @param med
+     * @param mac
+     * @param narc
+     * @param rob
+     * @return
+     */
     public boolean isValid(int w, int fu, int fo, int o, int g, int fi, int med, int mac, int narc, int rob)
     {
         return(w<=waterQuant)&&(fu<=fursQuant)

@@ -6,85 +6,39 @@
 
 package spaceTrader;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.application.Preloader;
+import javafx.application.Preloader.ProgressNotification;
+import javafx.application.Preloader.StateChangeNotification;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javax.swing.JButton;
-import spaceTrader.Universe;
+import static spaceTrader.FXMLDocumentController.newU;
+import static spaceTrader.FXMLDocumentController.playerInfo;
+
 /**
+ * Simple Preloader Using the ProgressBar Control
  *
  * @author Quan
  */
-public class FXMLDocumentController implements Initializable {
-    private int skill1Points;
-    private int skill2Points;
-    private int skill3Points;
-    private int skill4Points;
-    private String userName;
-    private Universe copyU;
+public class MarketLoader implements Initializable {
+    
+    ProgressBar bar;
+    Stage stage;
     private Planet planet;
+    private Universe copyU;
     private Planet planett;
-    ArrayList<Button> planetButtons = new ArrayList();
-    @FXML
-    private Button plan1;
-    @FXML
-    private Button plan2;
-    @FXML
-    private Button plan3;
-    @FXML
-    private Button plan4;
-    @FXML
-    private Button plan5;
-    @FXML
-    private Button plan6; 
-    @FXML
-    private Button plan7;
-    @FXML
-    private Button plan8;
-    @FXML
-    private Button plan9;
-    @FXML
-    private Button plan10;
-    @FXML
-    private Button plan11;
-    @FXML
-    private Button plan12; 
-    @FXML
-    private Button plan13;
-    @FXML
-    private Button plan14;
-    @FXML
-    private Button plan15;
-    @FXML
-    private Ellipse playerLoc;
-    @FXML
-    private Button cancel;
-    @FXML
-    private Button travelButton;
     @FXML
     private Label numCredits;
     @FXML
@@ -127,8 +81,6 @@ public class FXMLDocumentController implements Initializable {
     private Label narcoticsQuantityID;
     @FXML
     private Label foodQuantityID;
-     @FXML
-    private Label fuelLabel;
     @FXML
     private Button exitGame;
 
@@ -178,282 +130,32 @@ public class FXMLDocumentController implements Initializable {
     @FXML 
     private TextField robotsNum;    
     @FXML 
-    private TextField playerName;
-    
-    @FXML 
-    private TextArea skill1Num;
-    
-    @FXML 
-    private TextArea skill2Num;
-    
-    @FXML 
-    private TextArea skill3Num;
-    
-    @FXML 
-    private TextArea skill4Num;
-    
-    @FXML
-    private TextArea totalSkillPoints;
-    
-    @FXML
-    private Button marketPlaceButton;
-    
-    private String difficultyLevel;
-    
-    Map<String, Integer> dictionaryPoints;
-    Map<String, TextArea> dictionaryLabel;
-
-    /**
-     *
-     */
-    public static Universe newU;
-    @FXML
-    private void closeWindow(ActionEvent event) {
-       // get a handle to the stage
-    Stage stage = (Stage) exitGame.getScene().getWindow();
-    // do what you have to do
-    stage.hide();
-}
-    @FXML
-    private void destination() throws Exception{
-        try{
-
-        }catch(Exception e){
-            
-        }
-        
-        
-    }
-    @FXML
-    private void newGame(ActionEvent event) throws Exception{
-      try {
-            spaceTrader.SpaceTraderMain.replaceSceneContent("NewUser.fxml",this);
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
+ 
+    private Scene createPreloaderScene() {
+        bar = new ProgressBar();
+        BorderPane p = new BorderPane();
+        p.setCenter(bar);
+        return new Scene(p, 300, 150);        
     }
     
-    @FXML
-    private void closeNewGame(ActionEvent event) throws Exception{
-      try {
-            spaceTrader.SpaceTraderMain.replaceSceneContent("FXMLDocument.fxml",this);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    @FXML
+ 
+       @FXML
     private void enterMarket(ActionEvent event) throws Exception{
       try {
-            MarketLoader controller = new MarketLoader();
             spaceTrader.SpaceTraderMain.replaceSceneContent("Marketplace.fxml",this);
             updateMarket();
-            copyU = new Universe();
-            copyU.universe =newU.getCopy();
-            Color y = Color.BLUE;
-            plan1.setStyle("-fx-base: #b6e7c9;");
-            plan2.setStyle("-fx-base: #FFFFFF ;");
-            plan3.setStyle("-fx-base: #FFFFFF ;");
-        } catch (Exception ex) {
-            System.out.println("ooo"+ex);
-        }
-      
-    }
-      @FXML
-    private void returnToInterface(ActionEvent event) throws Exception{
-        try {
-            spaceTrader.SpaceTraderMain.replaceSceneContent("newScreen.fxml",this);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    @FXML
-    private void enterU(ActionEvent event) throws Exception{
-          try{
-            copyU = new Universe();
-            copyU.universe =newU.getCopy();
-            Circle circle = new Circle();
-            circle.setRadius(100);
-            spaceTrader.SpaceTraderMain.replaceSceneContent("destination.fxml",this);
-            fuelLabel.setText("Light Years Left: "+ playerInfo.myShip.lightYearsLeft);
-            for(Planet p: copyU.universe){
-                if(p.xLocation==playerInfo.myShip.currentLoc[0] && p.yLocation==playerInfo.myShip.currentLoc[1])
-                {
-                    playerLoc.setVisible(false);
-                    break;
-                }
-                else
-                    playerLoc.relocate(playerInfo.myShip.currentLoc[0],playerInfo.myShip.currentLoc[1]);
-            }
-            planetButtons.add(plan1);
-            planetButtons.add(plan2);
-            planetButtons.add(plan3);
-            planetButtons.add(plan4);
-            planetButtons.add(plan5);
-            planetButtons.add(plan6);
-             planetButtons.add(plan7);
-            planetButtons.add(plan8);
-            planetButtons.add(plan9);
-            planetButtons.add(plan10);
-            planetButtons.add(plan11);
-            planetButtons.add(plan12);
-             planetButtons.add(plan13);
-            planetButtons.add(plan14);
-            planetButtons.add(plan15);
-            for(Button x: planetButtons)
-            {
-                x.setShape(circle);
-                for(Planet p: copyU.universe)
-                    if(p.name.equals(x.getText()))
-                    {
-                        x.relocate(p.xLocation,p.yLocation);
-                        if(x.getLayoutX() == playerInfo.myShip.currentLoc[0] && x.getLayoutY() == playerInfo.myShip.currentLoc[1])
-                            x.setStyle("-fx-base: #b6e7c9;");
-                    }   
-            }
-           
-
-        }     
-        catch(Exception e){ 
-           
-            System.out.println(e);
-        }   
-    }
-
-    @FXML 
-    //Allows you to switch planets
-    private void switchPlanet(ActionEvent event) throws Exception
-    {
-        Button pressed = (Button)event.getSource();
-        String y = pressed.getId();
-        String buttonText = pressed.getText();
-        int index=0;
-        for(Planet p: copyU.universe)
-            if(p.name.equals(buttonText))
-                index = copyU.universe.indexOf(p);
-        Planet p = copyU.universe.get(index);
+            copyU = newU;
         
-        if(playerInfo.myShip.travelPossible(p.xLocation,p.yLocation))
-        {
-              playerLoc.setVisible(false);
-              for(Button x: planetButtons)
-              {
-
-                  if((x.getId()).equals(y))
-                  {
-                     x.setStyle("-fx-base: #b6e7c9;");
-                  }else
-                  {
-                      x.setStyle("-fx-base: #FFFFFF ;");
-                  }
-              }
-              playerInfo.myShip.lightYearsLeft -= Math.pow(Math.pow(p.xLocation-playerInfo.myShip.currentLoc[0], 2) + Math.pow(p.yLocation - playerInfo.myShip.currentLoc[1],2),.5);
-              playerInfo.myShip.currentLoc[0] = p.xLocation;
-              playerInfo.myShip.currentLoc[1] = p.yLocation;
-              fuelLabel.setText("Light Years Left: "+ playerInfo.myShip.lightYearsLeft);
-              Random rand = new Random();
-              int num = rand.nextInt(5)+1;
-              RandomEvents randE = new RandomEvents(playerInfo);
-              
-              switch(num){
-                    case 1:
-                            randE.loseCargo();
-                            break;
-                    case 2:
-                            randE.findMoney();
-                            break;
-                    case 3:
-                            randE.getRobbed();
-                            break;
-                    case 4:
-                            randE.runAway();
-                            break;
-                    case 5:
-                            randE.findFuel();
-                            break;
-                                 
-              }
-        }
-        newU.universe.set(0,p);
-        //updateMarket();
-    }
-    
-           
-    
-@FXML
-    private void addSkill1(ActionEvent event) throws Exception{
-      try {
-          if(skillPointsExist())
-          {
-            skill1Points++;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())-1));
-            skill1Num.setText(""+skill1Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }    
-   @FXML
-    private void addSkill2(ActionEvent event) throws Exception{
-      try {
-          if(skillPointsExist())
-          {
-            skill2Points++;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())-1));
-            skill2Num.setText(""+skill2Points);
-          }
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
-    @FXML
-    private void addSkill3(ActionEvent event) throws Exception{
-      try {
-          if(skillPointsExist())
-          {
-            skill3Points++;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())-1));
-            skill3Num.setText(""+skill3Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-    @FXML
-    private void addSkill4(ActionEvent event) throws Exception{
-      try {
-          if(skillPointsExist())
-          {
-            skill4Points++;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())-1));
-            skill4Num.setText(""+skill4Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-    @FXML
-    private void minusSkill(ActionEvent event) throws Exception
-    {
-      Button button = (Button)event.getSource();
-      String buttonId = button.getId();
-      try {
-          
-          if(dictionaryPoints.get(buttonId)!=1)
-          {
-            dictionaryPoints.put(buttonId, dictionaryPoints.get(buttonId)-1);
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())+1));
-            dictionaryLabel.get(buttonId).setText(""+dictionaryPoints.get(buttonId));
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }    
-
- @FXML
+     @FXML
     private void max(ActionEvent event) throws Exception
     {
       Button button = (Button)event.getSource();
       String buttonId = button.getId();
+      System.out.println(newU.universe.toString()+"-----------------------------------------");
       try {
           if(buttonId.equals("waterMax"))
           {
@@ -647,9 +349,22 @@ public class FXMLDocumentController implements Initializable {
               playerInfo.myShip.narcotics -= narcotics;
               playerInfo.myShip.robots -= robots;
           }
+           if(!planetSwitch.getText().equals(""))
+          {
+              if(Integer.parseInt(planetSwitch.getText())>=0 && Integer.parseInt(planetSwitch.getText())<=8 )
+              {
+                  planet =  newU.universe.get(Integer.parseInt(planetSwitch.getText())-1);
+                  if(!planet.equals(planett)){
+                    Collections.swap(newU.universe, 0, Integer.parseInt(planetSwitch.getText())-1);
+                    planett = newU.universe.get(0);
+                    planetSwitch.setText("");
+                    System.out.println("Current Planet:" +planet.name +" Choose 1-8 to move planets");
+                  }
+              }
+          }
           updateMarket();
       } catch (Exception ex) {
-            System.out.println("broke"+ex);
+            System.out.println(ex);
         }
     }  
     @FXML
@@ -801,35 +516,13 @@ public class FXMLDocumentController implements Initializable {
 
 
           }
+          DBFunctions x = new DBFunctions();
+          x.saveGame(newU,playerInfo);
           updateMarket();
       } catch (Exception ex) {
             System.out.println(ex);
         }
-    }   
-    @FXML
-    private void saveGame() throws Exception
-    {
-        try
-        {
-        DBFunctions x = new DBFunctions();
-        x.saveGame(newU,playerInfo);
-        }catch(Exception e)
-        {
-            System.out.println(e);
-        }
-    }
-    @FXML
-    private void loadGame() throws Exception
-    {
-        try
-        {
-        DBFunctions x = new DBFunctions();
-        x.loadGame();
-        }catch(Exception e)
-        {
-            System.out.println(e);
-        }
-    }
+    }       
     private void updateMarket(){
             cargoSpace.setText(playerInfo.myShip.count+"/"+playerInfo.myShip.maxItems);
             numCredits.setText(""+playerInfo.credits);
@@ -854,130 +547,18 @@ public class FXMLDocumentController implements Initializable {
             foodQuantityID.setText(""+newU.universe.get(0).market.foodQuant);
             machinesQuantityID.setText(""+newU.universe.get(0).market.machinesQuant);
     }
-    @FXML
-    private void minusSkill1(ActionEvent event) throws Exception{
-      try {
-          if(skill1Points!=1)
-          {
-            skill1Points--;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())+1));
-            skill1Num.setText(""+skill1Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }    
-   @FXML
-    private void minusSkill2(ActionEvent event) throws Exception{
-        try {
-          if(skill2Points!=1)
-          {
-            skill2Points--;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())+1));
-            skill2Num.setText(""+skill2Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-    @FXML
-    private void minusSkill3(ActionEvent event) throws Exception{
-      try {
-          if(skill3Points!=1)
-          {
-            skill3Points--;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())+1));
-            skill3Num.setText(""+skill3Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-    @FXML
-    private void minusSkill4(ActionEvent event) throws Exception{
-      try {
-          if(skill4Points!=1)
-          {
-            skill4Points--;
-            totalSkillPoints.setText(""+(Integer.parseInt(""+totalSkillPoints.getText())+1));
-            skill4Num.setText(""+skill4Points);
-          }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-    @FXML
-    private void acceptPlayer(ActionEvent event) throws Exception{
-      try {  
-          if(easyButton.isSelected())
-            difficultyLevel = "Easy";
-          if(normalButton.isSelected())
-            difficultyLevel = "Normal";
-          if(hardButton.isSelected())
-            difficultyLevel = "Hard";
-          getName();
-          playerInfo = new Character(userName,skill1Points,skill2Points,skill3Points,skill4Points,difficultyLevel);
-          //System.out.println(playerInfo);
-          spaceTrader.SpaceTraderMain.players.add(playerInfo);
-          spaceTrader.SpaceTraderMain.replaceSceneContent("newScreen.fxml",this);
-          newU = new Universe();
-          newU.generateUniverse();
-          Random rand = new Random();
-          playerInfo.myShip.currentLoc[0] = rand.nextInt(600) ;
-          playerInfo.myShip.currentLoc[0] = rand.nextInt(400) ;
 
-
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-    }
-      /**
-    *A method that checks if the player has any more skill points to allocate..
-    *@param none 
-    *@return True if more skill point left False if not
-    *
-    */
-    private boolean skillPointsExist()
+    /**
+     *
+     */
+    public MarketLoader()
     {
-        int total = Integer.parseInt(totalSkillPoints.getText());
-        return total != 0;
+              
     }
-     /**
-    *A name method that grabs the text from the playerName field.
-    *@param none 
-    *@return none
-    *
-    */
-   
-    private void getName()
-    {
-        if(!playerName.getText().isEmpty())
-            userName = playerName.getText();
-        else
-            userName = "Unknown";
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        dictionaryPoints = new HashMap<String, Integer>();
-        dictionaryLabel = new HashMap<String, TextArea>();
-        dictionaryPoints.put("skill1Minus",1);
-        dictionaryPoints.put("skill2Minus",1);
-        dictionaryPoints.put("skill3Minus",1);
-        dictionaryPoints.put("skill4Minus",1);
-        dictionaryLabel.put("skill1Minus",skill1Num);
-        dictionaryLabel.put("skill2Minus",skill2Num);
-        dictionaryLabel.put("skill3Minus",skill3Num);
-        dictionaryLabel.put("skill4Minus",skill4Num);
-        if(easyButton!=null)
-        {
-        easyButton.setToggleGroup(myRadioButtons);
-        normalButton.setToggleGroup(myRadioButtons);
-        hardButton.setToggleGroup(myRadioButtons);
-        normalButton.setSelected(true);
-        }
-        
+              updateMarket();
+
     }
     
 }
