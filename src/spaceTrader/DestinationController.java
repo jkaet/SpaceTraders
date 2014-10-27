@@ -38,13 +38,12 @@ import javafx.scene.shape.*;
 
 
 public class DestinationController implements Initializable {
-
-/**
-* Destination is set by forming new circle that represents a planet
-*@param none
-*@return void
-*/    
-public void start() throws Exception
+    
+    /**
+     *
+     * @throws Exception
+     */
+    public void start() throws Exception
 {
    
 spaceTrader.SpaceTraderMain.replaceSceneContent("destination",this);

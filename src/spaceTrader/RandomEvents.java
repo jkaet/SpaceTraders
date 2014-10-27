@@ -29,7 +29,20 @@ public class RandomEvents {
     public RandomEvents(Character player){
 		this.player = player;
 	}
+    /**
+     * Doesn't return anything. Random event that finds fuel
+     * 
+     */
+    public void findFuel(){
+	
+            Random rand = new Random();
+            int ly = rand.nextInt(400);
 
+            player.myShip.lightYearsLeft += ly;
+
+            System.out.println("Congratulations! You found "+ly+" lgiht years worth of fuel! TURN UP!");
+
+	}
     /**
      * Doesn't return anything. Just a random event to happen to
      * a player on any given turn. Player's money will increase by some 

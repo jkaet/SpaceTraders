@@ -7,18 +7,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('stars.jpg');" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="402.0" prefWidth="601.0">
+      <AnchorPane layoutY="7.0" prefHeight="482.0" prefWidth="819.0">
          <children>
-            <Circle fx:id="planet1" fill="DODGERBLUE" layoutX="72.0" layoutY="135.0" onMouseClicked="#enterMarket" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet2" fill="DODGERBLUE" layoutX="251.0" layoutY="99.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet5" fill="DODGERBLUE" layoutX="153.0" layoutY="219.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet4" fill="DODGERBLUE" layoutX="357.0" layoutY="163.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet7" fill="DODGERBLUE" layoutX="251.0" layoutY="319.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet8" fill="DODGERBLUE" layoutX="72.0" layoutY="311.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet6" fill="DODGERBLUE" layoutX="419.0" layoutY="263.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="planet3" fill="DODGERBLUE" layoutX="447.0" layoutY="93.0" onMouseClicked="#curPlanet" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button fx:id="plan1" layoutX="126.0" layoutY="133.0" mnemonicParsing="false" onAction="#switchPlanet" style="-fx-border-radius: 50px;" text="Exo" />
+            <Button fx:id="plan2" layoutX="230.0" layoutY="120.0" mnemonicParsing="false" onAction="#switchPlanet" text="Acamar" />
+            <Button fx:id="plan3" layoutX="324.0" layoutY="167.0" mnemonicParsing="false" onAction="#switchPlanet" text="Carzon" />
+            <Button fx:id="plan4" layoutX="219.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchPlanet" text="Ligon" />
+            <Button fx:id="plan6" layoutX="118.0" layoutY="208.0" mnemonicParsing="false" onAction="#switchPlanet" text="Kravar" />
+            <Button fx:id="plan5" layoutX="365.0" layoutY="208.0" mnemonicParsing="false" onAction="#switchPlanet" text="Merik" />
+            <Button fx:id="plan8" layoutX="58.0" layoutY="66.0" mnemonicParsing="false" onAction="#switchPlanet" text="Nix" />
+            <Button fx:id="plan11" layoutX="233.0" layoutY="41.0" mnemonicParsing="false" onAction="#switchPlanet" text="Ventax" />
+            <Button fx:id="plan14" layoutX="396.0" layoutY="27.0" mnemonicParsing="false" onAction="#switchPlanet" text="Rutia" />
+            <Button fx:id="plan15" layoutX="377.0" layoutY="66.0" mnemonicParsing="false" onAction="#switchPlanet" text="Tyrus" />
+            <Button fx:id="plan9" layoutX="135.0" layoutY="27.0" mnemonicParsing="false" onAction="#switchPlanet" text="Sigma" />
+            <Button fx:id="plan7" layoutX="47.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchPlanet" text="Zuul" />
+            <Button fx:id="plan12" layoutX="298.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchPlanet" text="Vagra" />
+            <Button fx:id="plan13" layoutX="298.0" layoutY="66.0" mnemonicParsing="false" onAction="#switchPlanet" text="Somari" />
+            <Button fx:id="plan10" layoutX="168.0" layoutY="66.0" mnemonicParsing="false" onAction="#switchPlanet" text="Yew" />
+            <Label fx:id="fuelLabel" layoutX="660.0" layoutY="6.0" text="Label" />
+            <Ellipse fx:id="playerLoc" fill="DODGERBLUE" layoutX="116.0" layoutY="94.0" radiusX="4.0" radiusY="5.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button fx:id="cancelPlanetSwitch" layoutX="654.0" layoutY="40.0" mnemonicParsing="false" onAction="#returnToInterface" text="Back" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

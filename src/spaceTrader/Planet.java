@@ -7,17 +7,49 @@
 package spaceTrader;
 
 /**
- * Planet class holds info about planet and generates
- *new market 
+ *
  * @author Brandens
  */
 public class Planet {
+
+    /**
+     *Planet name
+     */
     public String name;
+
+    /**
+     *Planet techLevel;
+     */
     public int techLevel;
+
+    /**
+     *Planet resourceLevel;
+     */
     public int resourceLevel;
+
+    /**
+     *Planet xLocation;
+     */
     public int xLocation;
+
+    /**
+     *planet yLocation
+     */
     public int yLocation;
+
+    /**
+     *
+     */
     public Market market;
+
+    /**
+     *Generates a planet and its properties
+     * @param name
+     * @param tec
+     * @param res
+     * @param x
+     * @param y
+     */
     public Planet(String name, int tec, int res, int x, int y) {
         this.name = name;
         techLevel = tec;
@@ -27,22 +59,17 @@ public class Planet {
         
     }
 
-/**
-*Generates new Market with random prices and quantities
-*@return none
-*
-*/    
+    /**
+     *Creates the planets market
+     */
     public void generateMarket()
     {
         market = new Market();
         market.generatePricesAndQuanities(this);
     }
-    
-/**
-*Returns string with planet name and attributes
-*@return String
-*
-*/        
+    /**
+     *Provides string representation of Planet
+     */
     public String toString(){
         String pInfo = new String();
         pInfo = "";
