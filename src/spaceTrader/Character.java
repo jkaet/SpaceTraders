@@ -1,5 +1,7 @@
 package spaceTrader;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,34 +16,19 @@ package spaceTrader;
 
 //name, 4 skill points, difficulty level, 
 
-public class Character {
+
+
+public class Character implements Serializable {
      
     private String name = "";
     private int pilotPoints;
     private int fighterPoints;
     private int traderPoints;
     private int engineerPoints;
-
-    /**
-     *
-     */
     public int credits;
-
-    /**
-     *
-     */
     public Ship myShip;
     private String difficultyLevel;
     
-    /**
-     * Creates the character with properties chosen.
-     * @param name
-     * @param pilotPoints
-     * @param fighterPoints
-     * @param traderPoints
-     * @param engineerPoints
-     * @param difficultyLevel
-     */
     public Character(String name, int pilotPoints, int fighterPoints,
                     int traderPoints, int engineerPoints, String difficultyLevel){
         this.name = name;
@@ -55,100 +42,122 @@ public class Character {
     }
     
     //GETTERS
-    
+
     /**
-     *
-     * @return the character name
-     */
-        
+    *Returns name of character
+    *@return name as a String
+    *
+    */    
     public String getName(){
         return name;
     }
     
     /**
-     *
-     * @return number of pilot points
-     */
+    *Returns pilot points of character
+    *@return points as an int
+    *
+    */
+
     public int getPilotPoints(){
         return pilotPoints;
     }
-    
+
     /**
-     *
-     * @return number of fighter points
-     */
+    *Returns fighter points of character
+    *@return points as an int
+    *
+    */
+
     public int getFighterPoints(){
         return fighterPoints;
     }
     
     /**
-     *
-     * @return number of trader points
-     */
+    *Returns trader points of character
+    *@return points as an int
+    *
+    */
+
     public int getTraderPoints(){
         return traderPoints;
     }
     
     /**
-     *
-     * @return number of engineer points
-     */
+    *Returns engineer points of character
+    *@return points as an int
+    *
+    */
+
     public int getEngineerPoints(){
         return engineerPoints;
     }
     
     /**
-     *
-     * @return difficultyLevel
-     */
+    *Returns difficulty level of character
+    *@return level as a String
+    *
+    */
     public String getDifficultyLevel(){
         return difficultyLevel;
     }
     
     // SETTERS
-
+    
     /**
-     *Sets the name
-     * @param name
-     */
-        public void setName(String name){
+    *Sets name of the character
+    *@param desired name as a string
+    *
+    */
+    
+    public void setName(String name){
         this.name = name; 
     }
     
     /**
-     *sets fighter Points
-     * @param fighterPoints
-     */
+    *Sets fighter points of the character
+    *@param points as an int
+    *
+    */
+
     public void setFighterPoints(int fighterPoints){
         this.fighterPoints = fighterPoints;
     }
     
     /**
-     *sets trader points
-     * @param traderPoints
-     */
+    *Sets trader points of the character
+    *@param points as an int
+    *
+    */
+
     public void setTraderPoints(int traderPoints){
         this.traderPoints = traderPoints;
     }
     
     /**
-     *sets engineer points
-     * @param engineerPoints
-     */
+    *Sets engineer points of the character
+    *@param points as an int
+    *
+    */
+
     public void setEngineerPoints(int engineerPoints){
         this.engineerPoints = engineerPoints;
     }
     
     /**
-     * Sets pilot points
-     * @param pilotPoints
-     */
+    *Sets pilot points of the character
+    *@param points as an int
+    *
+    */
+
     public void setPilotPoints (int pilotPoints){
         this.pilotPoints = pilotPoints;
     }
+    
     /**
-     * @returns string representation of the player
-     */
+    *Returns character name and attributes in a string
+    *@return String
+    *
+    */
     public String toString()
     {
         return "Name: " + name + "; Pilot Points: " + pilotPoints + "; Fighter Points: " + fighterPoints + "; Trader Points: " 

@@ -145,7 +145,10 @@ public class FXMLDocumentController implements Initializable {
     private RadioButton hardButton;
     @FXML
     private RadioButton normalButton;
-     
+    @FXML
+    private Label sysMessage;
+     @FXML 
+    private TextField shipTypeText;
     @FXML 
     private TextField waterNum;
     
@@ -214,10 +217,36 @@ public class FXMLDocumentController implements Initializable {
     // do what you have to do
     stage.hide();
 }
-    @FXML
-    private void destination() throws Exception{
-        try{
+      @FXML
+    private void enterShipYard(ActionEvent event) throws Exception{
+      try {
+            spaceTrader.SpaceTraderMain.replaceSceneContent("ShipYard.fxml",this);
 
+        } catch (Exception ex) {
+            System.out.println("ooo"+ex);
+        }
+      
+    }
+    @FXML
+    private void shipOk(ActionEvent event) throws Exception{
+        try{
+            if(shipTypeText.getText() != "")
+            {
+                int type = Integer.parseInt(shipTypeText.getText());
+                if(type > 0 && type < 4)
+                {
+                    if((((type*2)) < newU.universe.get(0).techLevel))
+                    {
+                    playerInfo.myShip.changeType(type);
+                    sysMessage.setText("You successfully bought a ship of type: "+type);
+
+                    }else{
+                    sysMessage.setText("Planet Resource Level Too low");
+                }
+                }else{
+                    sysMessage.setText("Invalid Ship Type");
+                }
+            }
         }catch(Exception e){
             
         }
@@ -250,9 +279,6 @@ public class FXMLDocumentController implements Initializable {
             copyU = new Universe();
             copyU.universe =newU.getCopy();
             Color y = Color.BLUE;
-            plan1.setStyle("-fx-base: #b6e7c9;");
-            plan2.setStyle("-fx-base: #FFFFFF ;");
-            plan3.setStyle("-fx-base: #FFFFFF ;");
         } catch (Exception ex) {
             System.out.println("ooo"+ex);
         }
@@ -825,6 +851,11 @@ public class FXMLDocumentController implements Initializable {
         {
         DBFunctions x = new DBFunctions();
         x.loadGame();
+        try {
+            spaceTrader.SpaceTraderMain.replaceSceneContent("newScreen.fxml",this);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         }catch(Exception e)
         {
             System.out.println(e);
@@ -908,7 +939,7 @@ public class FXMLDocumentController implements Initializable {
     }
     @FXML
     private void acceptPlayer(ActionEvent event) throws Exception{
-      try {  
+      
           if(easyButton.isSelected())
             difficultyLevel = "Easy";
           if(normalButton.isSelected())
@@ -917,6 +948,8 @@ public class FXMLDocumentController implements Initializable {
             difficultyLevel = "Hard";
           getName();
           playerInfo = new Character(userName,skill1Points,skill2Points,skill3Points,skill4Points,difficultyLevel);
+                    try {  
+
           //System.out.println(playerInfo);
           spaceTrader.SpaceTraderMain.players.add(playerInfo);
           spaceTrader.SpaceTraderMain.replaceSceneContent("newScreen.fxml",this);
@@ -928,7 +961,7 @@ public class FXMLDocumentController implements Initializable {
 
 
         } catch (Exception ex) {
-            System.out.println(ex);
+            System.out.println("sadsa"+ex);
         }
     }
       /**

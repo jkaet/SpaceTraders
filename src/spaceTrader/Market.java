@@ -5,13 +5,14 @@
  */
 package spaceTrader;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Quan
  */
-public class Market
+public class Market implements Serializable
 {
 
     /**

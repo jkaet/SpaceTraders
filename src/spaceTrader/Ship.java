@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,13 +7,14 @@
 
 package spaceTrader;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Brandens
  */
-public class Ship {
+public class Ship implements Serializable{
 
     /**
      *Number of waters on the shit
@@ -48,6 +50,8 @@ public class Ship {
      *Amount of medicine on the ship
      */
     public int medicine = 0;
+    
+    public shipType type = Ship.shipType.SMALL;
 
     /**
      *Amount of machines on the ship
@@ -82,12 +86,14 @@ public class Ship {
     int lightYearsLeft;
 
     /**
-     *
+     *Creates a new instance of Shi[
      * @param ship
      */
     public Ship(String ship) {
         Random rand = new Random();
         name = ship;
+        type = Ship.shipType.SMALL;
+        this.maxItems = 50;
         lightYearsLeft = rand.nextInt(150) +350;
     }
 
@@ -148,4 +154,85 @@ public class Ship {
      {
          return( Math.pow(Math.pow(x-currentLoc[0], 2) + Math.pow(y - currentLoc[1],2),.5) < lightYearsLeft);
      }
+    /**
+     *Specifies three types of ships.
+     */
+    public enum shipType {
+         SMALL, MEDIUM, LARGE
+     }
+    
+    /**
+     *If possible adjusts ship type to the passed in parameter.
+     * @param typ1
+     */
+    public void changeType(int type1) {
+        shipType temp = null;
+        int price = 0;
+        switch (type1) {
+            case 1:
+                temp = type;
+                price = 40000;
+                  if(price <= FXMLDocumentController.playerInfo.credits)
+                {
+                type = Ship.shipType.SMALL;
+                this.maxItems = 50;
+                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
+                if (count > maxItems) {
+                    // Set a label that says cannot downsize 
+                    //because the item amount is too high
+                    type = temp;
+                } if (temp == Ship.shipType.LARGE) {
+                    lightYearsLeft = lightYearsLeft - 200;
+                } else if (temp == Ship.shipType.MEDIUM) {
+                    lightYearsLeft = lightYearsLeft - 100;
+                }
+                    FXMLDocumentController.playerInfo.credits = FXMLDocumentController.playerInfo.credits - price;
+                }}
+                break;
+            case 2:
+                temp = type;
+                price = 75000;
+                  if(price <= FXMLDocumentController.playerInfo.credits)
+                {
+                type = Ship.shipType.MEDIUM;
+                this.maxItems = 150;
+                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
+                if (count > maxItems) {
+                    // Set a label that says cannot downsize 
+                    //because the item amount is too high
+                    type = temp;
+                }
+                if (temp == Ship.shipType.LARGE) {
+                    lightYearsLeft = lightYearsLeft - 100;
+                } else if (temp == Ship.shipType.SMALL) {
+                    lightYearsLeft = lightYearsLeft + 100;
+                }
+                    FXMLDocumentController.playerInfo.credits = FXMLDocumentController.playerInfo.credits - price;
+                }}
+                break;
+            case 3:
+                temp = type;
+                price = 100000;
+                if(price <= FXMLDocumentController.playerInfo.credits)
+                {
+                type = Ship.shipType.LARGE;
+                this.maxItems = 250;
+                if (temp != type  ) {
+                if (count > maxItems) {
+                    // Set a label that says cannot downsize 
+                    //because the item amount is too high
+                    type = temp;
+                }
+                if (temp == Ship.shipType.MEDIUM) {
+                    lightYearsLeft = lightYearsLeft + 100;
+                } else if (temp == Ship.shipType.SMALL) {
+                    lightYearsLeft = lightYearsLeft + 200;
+                }
+                    FXMLDocumentController.playerInfo.credits = FXMLDocumentController.playerInfo.credits - price;
+                }}
+                break;
+                
+        }
+    }
 }  
+
