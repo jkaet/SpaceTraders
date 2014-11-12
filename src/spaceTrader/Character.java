@@ -1,5 +1,7 @@
 package spaceTrader;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,7 +18,7 @@ package spaceTrader;
 
 
 
-public class Character {
+public class Character implements Serializable {
      
     private String name = "";
     private int pilotPoints;

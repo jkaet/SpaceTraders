@@ -11,8 +11,6 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
-import com.parse.Parse;
-import com.parse.ParseObject;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -21,6 +19,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.*;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -45,12 +48,20 @@ public class DBFunctions
 //            gameScore.put("playerName", "Sean Plott");
 //            gameScore.put("cheatMode", false);
 //            gameScore.saveInBackground();
+            String xSerialize = toString(x);
+            String ySerialize = toString(y);
+            //Universe xs =(Universe) fromString(ys);
             Firebase ref = new Firebase("https://resplendent-inferno-3338.firebaseio.com/");
             Firebase usersRef = ref.child("users");
             Map<String, List<Object>> users = new HashMap<>();
             List<Object> info = new ArrayList<>();
+            info.add(xSerialize);
+            info.add(ySerialize);
             info.add(x);
             info.add(y);
+
+
+            
             users.put(y.getName(),info);
             usersRef.setValue(users);
         }catch(Exception e)
@@ -73,8 +84,27 @@ public class DBFunctions
             postsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                Map<String, List<Object>> newPost = (Map<String, List<Object>>) snapshot.getValue();
-                System.out.println(newPost.get("users"));
+                try {
+                    Map<String, List<Object>> newPost = (Map<String, List<Object>>) snapshot.getValue();
+                    Map<String, List<Object>> newPost2 = (Map<String, List<Object>>) newPost.get("users");
+                    List<Object> newPost3 = newPost2.get("Unknown");
+                    
+                   
+                    spaceTrader.FXMLDocumentController x = new FXMLDocumentController();
+                     spaceTrader.FXMLDocumentController.playerInfo = (Character) fromString((String)newPost3.get(1));
+                    spaceTrader.FXMLDocumentController.newU = (Universe) fromString((String)newPost3.get(0));
+//                try
+//                {
+//                spaceTrader.SpaceTraderMain.replaceSceneContent("newScreen.fxml",x);
+//                }catch(Exception e)
+//                {
+//                    System.out.println("ASDASDA"+e);
+//                }
+                } catch (IOException ex) {
+                    Logger.getLogger(DBFunctions.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DBFunctions.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -86,5 +116,24 @@ public class DBFunctions
             System.out.println("fail"+e);
         }
         
+    }
+    /** Read the object from Base64 string. */
+   private static Object fromString( String s ) throws IOException ,
+                                                       ClassNotFoundException {
+        byte [] data = spaceTrader.Base64Coder.decode( s );
+        ObjectInputStream ois = new ObjectInputStream( 
+                                        new ByteArrayInputStream(  data ) );
+        Object o  = ois.readObject();
+        ois.close();
+        return o;
+   }
+
+    /** Write the object to a Base64 string. */
+    private static String toString( Serializable o ) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream( baos );
+        oos.writeObject( o );
+        oos.close();
+        return new String( Base64Coder.encode( baos.toByteArray() ) );
     }
 }

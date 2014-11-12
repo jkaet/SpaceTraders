@@ -10,6 +10,7 @@
    <children>
       <Button fx:id="marketPlaceButton" layoutX="41.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterMarket" text="MARKETPLACE" />
       <Button fx:id="travelButton" layoutX="151.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterU" text="TRAVEL" />
-      <Button fx:id="save" layoutX="240.0" layoutY="37.0" mnemonicParsing="false" onAction="#saveGame" text="Save" />
+      <Button fx:id="save" layoutX="312.0" layoutY="37.0" mnemonicParsing="false" onAction="#saveGame" text="Save" />
+      <Button layoutX="227.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterShipYard" text="Shipyard" />
    </children>
 </AnchorPane>

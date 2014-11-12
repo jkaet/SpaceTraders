@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="21.0" layoutY="36.0" text="Enter ship type:" textFill="#fffefe">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="276.0" text="Prices:" textFill="#fffefe">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="306.0" text="1: $50,000  2:$75,000  3:$100,000" textFill="#fffefe">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="shipTypeText" layoutX="188.0" layoutY="24.0" prefHeight="55.0" prefWidth="225.0" />
+      <Button fx:id="backButton" layoutX="498.0" layoutY="309.0" mnemonicParsing="false" onAction="#returnToInterface" text="Back" />
+      <Button fx:id="shipOkButton" layoutX="431.0" layoutY="39.0" mnemonicParsing="false" onAction="#shipOk" text="OK" />
+      <Label fx:id="sysMessage" layoutX="14.0" layoutY="158.0" text="System Message: None" textFill="#fffefe">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

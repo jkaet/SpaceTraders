@@ -6,7 +6,6 @@
 
 package spaceTrader;
 
-import com.parse.Parse;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -6,11 +6,13 @@
 
 package spaceTrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Brandens
  */
-public class Planet {
+public class Planet implements Serializable{
 
     /**
      *Planet name

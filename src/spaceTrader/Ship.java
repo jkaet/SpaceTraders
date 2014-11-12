@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,13 +7,14 @@
 
 package spaceTrader;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Brandens
  */
-public class Ship {
+public class Ship implements Serializable{
 
     /**
      *Number of waters on the shit
@@ -84,13 +86,14 @@ public class Ship {
     int lightYearsLeft;
 
     /**
-     *
+     *Creates a new instance of Shi[
      * @param ship
      */
     public Ship(String ship) {
         Random rand = new Random();
         name = ship;
-        changeType(1);
+        type = Ship.shipType.SMALL;
+        this.maxItems = 50;
         lightYearsLeft = rand.nextInt(150) +350;
     }
 
@@ -151,21 +154,29 @@ public class Ship {
      {
          return( Math.pow(Math.pow(x-currentLoc[0], 2) + Math.pow(y - currentLoc[1],2),.5) < lightYearsLeft);
      }
-    
+    /**
+     *Specifies three types of ships.
+     */
     public enum shipType {
          SMALL, MEDIUM, LARGE
      }
     
-    // type is an int (1 to 3) rep. the 3 different sizes .
+    /**
+     *If possible adjusts ship type to the passed in parameter.
+     * @param typ1
+     */
     public void changeType(int type1) {
         shipType temp = null;
         int price = 0;
         switch (type1) {
             case 1:
                 temp = type;
-                price = 1000;
+                price = 40000;
+                  if(price <= FXMLDocumentController.playerInfo.credits)
+                {
                 type = Ship.shipType.SMALL;
                 this.maxItems = 50;
+                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
                 if (count > maxItems) {
                     // Set a label that says cannot downsize 
                     //because the item amount is too high
@@ -175,15 +186,17 @@ public class Ship {
                 } else if (temp == Ship.shipType.MEDIUM) {
                     lightYearsLeft = lightYearsLeft - 100;
                 }
-                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
                     FXMLDocumentController.playerInfo.credits = FXMLDocumentController.playerInfo.credits - price;
-                }
+                }}
                 break;
             case 2:
                 temp = type;
-                price = 1800;
+                price = 75000;
+                  if(price <= FXMLDocumentController.playerInfo.credits)
+                {
                 type = Ship.shipType.MEDIUM;
                 this.maxItems = 150;
+                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
                 if (count > maxItems) {
                     // Set a label that says cannot downsize 
                     //because the item amount is too high
@@ -194,15 +207,17 @@ public class Ship {
                 } else if (temp == Ship.shipType.SMALL) {
                     lightYearsLeft = lightYearsLeft + 100;
                 }
-                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
                     FXMLDocumentController.playerInfo.credits = FXMLDocumentController.playerInfo.credits - price;
-                }
+                }}
                 break;
             case 3:
                 temp = type;
-                price = 2400;
+                price = 100000;
+                if(price <= FXMLDocumentController.playerInfo.credits)
+                {
                 type = Ship.shipType.LARGE;
                 this.maxItems = 250;
+                if (temp != type  ) {
                 if (count > maxItems) {
                     // Set a label that says cannot downsize 
                     //because the item amount is too high
@@ -213,11 +228,11 @@ public class Ship {
                 } else if (temp == Ship.shipType.SMALL) {
                     lightYearsLeft = lightYearsLeft + 200;
                 }
-                if (temp != type && price <= FXMLDocumentController.playerInfo.credits ) {
                     FXMLDocumentController.playerInfo.credits = FXMLDocumentController.playerInfo.credits - price;
-                }
+                }}
                 break;
                 
         }
     }
 }  
+
