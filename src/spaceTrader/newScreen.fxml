@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="marketPlaceButton" layoutX="41.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterMarket" text="MARKETPLACE" />
-      <Button fx:id="travelButton" layoutX="151.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterU" text="TRAVEL" />
-      <Button fx:id="save" layoutX="312.0" layoutY="37.0" mnemonicParsing="false" onAction="#saveGame" text="Save" />
-      <Button layoutX="227.0" layoutY="37.0" mnemonicParsing="false" onAction="#enterShipYard" text="Shipyard" />
+      <ImageView fitHeight="400.0" fitWidth="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@stars.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="marketPlaceButton" layoutX="250.0" layoutY="174.0" mnemonicParsing="false" onAction="#enterMarket" style="-fx-background-color: white;" text="MARKETPLACE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="travelButton" layoutX="99.0" layoutY="174.0" mnemonicParsing="false" onAction="#enterU" style="-fx-background-color: white;" text="TRAVEL">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="save" layoutX="284.0" layoutY="272.0" mnemonicParsing="false" onAction="#saveGame" style="-fx-background-color: white;" text="SAVE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="431.0" layoutY="174.0" mnemonicParsing="false" onAction="#enterShipYard" style="-fx-background-color: white;" text="SHIPYARD">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="173.0" fitWidth="327.0" layoutX="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@NAV.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

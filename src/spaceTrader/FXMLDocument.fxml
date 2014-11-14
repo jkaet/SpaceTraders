@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -7,24 +8,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceTrader.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spaceTrader.FXMLDocumentController">
     <children>
-         <Text fill="WHITE" layoutX="137.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Space Trader">
-         <font>
-            <Font name="Helvetica" size="54.0" />
-         </font>
-      </Text>
-      <Button fx:id="newGame" layoutX="241.0" layoutY="140.0" onAction="#newGame" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black; -fx-border-color: white;" text="New Game" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="loadGame" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" onAction="#loadGame" style="-fx-background-color: black; -fx-border-color: white;" text="Load Game" textFill="WHITE">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@openScreen.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="newGame" layoutX="376.0" layoutY="121.0" onAction="#newGame" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black;" text="New Game" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-           <Button fx:id="exitGame" layoutX="241.0" layoutY="259.0" onAction="#closeWindow" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black; -fx-border-color: white;" text="Exit Game" textFill="WHITE">
+      <Button fx:id="loadGame" layoutX="376.0" layoutY="176.0" mnemonicParsing="false" onAction="#loadGame" style="-fx-background-color: black;" text="Load Game" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+           <Button fx:id="exitGame" layoutX="376.0" layoutY="230.0" onAction="#closeWindow" prefHeight="37.0" prefWidth="123.0" style="-fx-background-color: black;" text="Exit Game" textFill="WHITE">
         <font>
             <Font size="18.0" />
          </font>

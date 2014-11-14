@@ -47,7 +47,7 @@
             <Font size="21.0" />
          </font>
       </Text>
-      <Text fx:id="skill4" fill="WHITE" layoutX="29.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skill Points">
+      <Text fx:id="skill4" fill="WHITE" layoutX="29.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engineer">
          <font>
             <Font size="21.0" />
          </font>

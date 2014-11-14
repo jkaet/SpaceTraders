@@ -160,8 +160,8 @@ public class Universe implements Serializable{
         int techLevel;
         int recLevel;
         for(int i = 0; i < planet.length; i++){
-            xLoc = rand.nextInt(601);
-            yLoc = rand.nextInt(401);
+            xLoc = rand.nextInt(501);
+            yLoc = rand.nextInt(301);
             techLevel = rand.nextInt(8);
             recLevel = rand.nextInt(12);
             Planet newPlanet = new Planet(planet[i], techLevel, recLevel, xLoc, yLoc);
