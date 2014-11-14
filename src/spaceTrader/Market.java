@@ -114,6 +114,8 @@ public class Market implements Serializable
      *
      */
     public int firearmsQuant;
+    
+    public int fuelPrice;
 
     /**
      *
@@ -169,6 +171,7 @@ public class Market implements Serializable
         machinesQuant = (30 * p.techLevel);
         narcoticsQuant = (125 * p.techLevel) ;
         robotsQuant = (8 * p.techLevel);
+        fuelPrice = (7 * p.resourceLevel);
     }
 
     /**

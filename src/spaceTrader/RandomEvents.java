@@ -1,6 +1,7 @@
 package spaceTrader; 
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,11 +37,12 @@ public class RandomEvents {
     public void findFuel(){
 	
             Random rand = new Random();
-            int ly = rand.nextInt(400);
+            int ly = rand.nextInt(5);
 
-            player.myShip.lightYearsLeft += ly;
-
-            System.out.println("Congratulations! You found "+ly+" lgiht years worth of fuel! TURN UP!");
+            player.myShip.water += ly;
+            JOptionPane.showMessageDialog(null, "Congratulations! You found "+ly+" cartons of water! TURN UP!",
+                   "Event", JOptionPane.INFORMATION_MESSAGE);
+            //System.out.println("Congratulations! You found "+ly+" lgiht years worth of fuel! TURN UP!");
 
 	}
     /**
@@ -56,7 +58,8 @@ public class RandomEvents {
 
             player.credits += cash;
 
-            System.out.println("Congratulations! You found "+cash+" credits! TURN UP!");
+            JOptionPane.showMessageDialog(null, "Congratulations! You found "+ cash +" lgiht years worth of fuel! TURN UP!",
+                   "Event", JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
@@ -69,7 +72,7 @@ public class RandomEvents {
     public void getRobbed(){
 
             Random rand = new Random();
-            int stolenMoney = rand.nextInt(5101);
+            int stolenMoney = rand.nextInt(250);
 
             if(player.credits < stolenMoney){
                     player.credits = 0;
@@ -78,8 +81,9 @@ public class RandomEvents {
                     player.credits -= stolenMoney;
             }
 
-            System.out.println("You've been robbed! They took "+stolenMoney+" credits! Sucks to suck!");
-
+            //System.out.println("You've been robbed! They took "+stolenMoney+" credits! Sucks to suck!");
+            JOptionPane.showMessageDialog(null, "You've been robbed! They took "+stolenMoney+" credits! Sucks to suck!",
+                   "Event", JOptionPane.INFORMATION_MESSAGE);
 	}
 
     /**
@@ -95,9 +99,14 @@ public class RandomEvents {
         int temp = rand.nextInt(51);
         
         if(temp > 26){
-            player.credits = 0;
-            player.myShip.narcotics = 0;  
+            int num = rand.nextInt(250);
+            player.credits -= 50;
+            player.myShip.narcotics = 0;
+            JOptionPane.showMessageDialog(null, "you got robbed but you stopped them from taking much",
+                   "Event", JOptionPane.INFORMATION_MESSAGE);
          }
+        
+        
 
 
 	}
@@ -110,7 +119,10 @@ public class RandomEvents {
      * 
      */
     public void stay(){
+        
             player.myShip.narcotics = 0;
+            JOptionPane.showMessageDialog(null, "police are checking for drugs bro... hand them over, unless you're a good boy and didnt have any",
+                   "Event", JOptionPane.INFORMATION_MESSAGE);
         }
 
     /**

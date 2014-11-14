@@ -17,7 +17,7 @@
       <TextField fx:id="medicineNum" layoutX="59.0" layoutY="325.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="machinesNum" layoutX="59.0" layoutY="365.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="narcoticsNum" layoutX="59.0" layoutY="409.0" prefHeight="26.0" prefWidth="41.0" />
-      <TextField fx:id="robotsNum" layoutX="59.0" layoutY="458.0" prefHeight="26.0" prefWidth="41.0" />
+      <TextField fx:id="robotsNum" layoutX="59.0" layoutY="445.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="waterNum" layoutX="59.0" layoutY="86.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="fursNum" layoutX="59.0" layoutY="123.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="foodNum" layoutX="57.0" layoutY="161.0" prefHeight="26.0" prefWidth="41.0" />
@@ -69,7 +69,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="114.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robots">
+      <Text fill="WHITE" layoutX="111.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robots">
          <font>
             <Font size="18.0" />
          </font>
@@ -88,7 +88,7 @@
       <Button fx:id="medicineMax" layoutX="301.0" layoutY="326.0" mnemonicParsing="false" onAction="#max" text="MAX" />
       <Button fx:id="machinesMax" layoutX="301.0" layoutY="366.0" mnemonicParsing="false" onAction="#max" text="MAX" />
       <Button fx:id="narcoticsMax" layoutX="301.0" layoutY="410.0" mnemonicParsing="false" onAction="#max" text="MAX" />
-      <Button fx:id="robotsMax" layoutX="301.0" layoutY="467.0" mnemonicParsing="false" onAction="#max" text="MAX" />
+      <Button fx:id="robotsMax" layoutX="301.0" layoutY="446.0" mnemonicParsing="false" onAction="#max" text="MAX" />
       <Label fx:id="waterPriceID" layoutX="221.0" layoutY="85.0" prefHeight="27.0" prefWidth="67.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -134,12 +134,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="robotsPriceID" layoutX="221.0" layoutY="458.0" prefHeight="27.0" prefWidth="75.0" text="Label" textFill="WHITE">
+      <Label fx:id="robotsPriceID" layoutX="216.0" layoutY="445.0" prefHeight="27.0" prefWidth="75.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="robotsQuantityID" layoutX="412.0" layoutY="463.0" prefHeight="26.0" prefWidth="48.0" text="Label" textFill="WHITE">
+      <Label fx:id="robotsQuantityID" layoutX="412.0" layoutY="444.0" prefHeight="26.0" prefWidth="48.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -217,6 +217,22 @@
       <Label fx:id="cargoSpace" layoutX="519.0" layoutY="522.0" text="Num" textFill="#f8f8f8">
          <font>
             <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fuelNum" layoutX="59.0" layoutY="477.0" prefHeight="26.0" prefWidth="41.0" />
+      <Text fx:id="fuelId" fill="WHITE" layoutX="113.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="fuelPriceID" layoutX="216.0" layoutY="477.0" prefHeight="27.0" prefWidth="75.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="fuelQuantityID" layoutX="412.0" layoutY="476.0" prefHeight="26.0" prefWidth="48.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
          </font>
       </Label>
    </children>

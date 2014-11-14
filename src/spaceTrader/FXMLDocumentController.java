@@ -107,6 +107,8 @@ public class FXMLDocumentController implements Initializable {
     private Label narcoticsPriceID;
     @FXML
     private Label foodPriceID;
+    @FXML
+    private Label fuelPriceID;
        @FXML
     private Label fursQuantityID;
     @FXML
@@ -127,6 +129,10 @@ public class FXMLDocumentController implements Initializable {
     private Label narcoticsQuantityID;
     @FXML
     private Label foodQuantityID;
+    @FXML
+    private Label fuelQuantityID;
+    @FXML
+    private TextField fuelNum;
      @FXML
     private Label fuelLabel;
     @FXML
@@ -372,34 +378,37 @@ public class FXMLDocumentController implements Initializable {
                       x.setStyle("-fx-base: #FFFFFF ;");
                   }
               }
-              playerInfo.myShip.lightYearsLeft -= Math.pow(Math.pow(p.xLocation-playerInfo.myShip.currentLoc[0], 2) + Math.pow(p.yLocation - playerInfo.myShip.currentLoc[1],2),.5);
+              Random rand = new Random();
+              playerInfo.myShip.lightYearsLeft -= rand.nextInt(80);//Math.pow(Math.pow(p.xLocation-playerInfo.myShip.currentLoc[0], 1) + Math.pow(p.yLocation - playerInfo.myShip.currentLoc[1],1),.5);
               playerInfo.myShip.currentLoc[0] = p.xLocation;
               playerInfo.myShip.currentLoc[1] = p.yLocation;
               fuelLabel.setText("Light Years Left: "+ playerInfo.myShip.lightYearsLeft);
-              Random rand = new Random();
-              int num = rand.nextInt(5)+1;
-              RandomEvents randE = new RandomEvents(playerInfo);
-              
-              switch(num){
-                    case 1:
-                            randE.loseCargo();
-                            break;
-                    case 2:
-                            randE.findMoney();
-                            break;
-                    case 3:
-                            randE.getRobbed();
-                            break;
-                    case 4:
-                            randE.runAway();
-                            break;
-                    case 5:
-                            randE.findFuel();
-                            break;
-                                 
+              int testerr = rand.nextInt(10);
+              if (testerr > 5) {
+                    int num = rand.nextInt(5)+1;
+                    RandomEvents randE = new RandomEvents(playerInfo);
+
+                    switch(num){
+                          case 1:
+                                  randE.loseCargo();
+                                  break;
+                          case 2:
+                                  randE.findMoney();
+                                  break;
+                          case 3:
+                                  randE.getRobbed();
+                                  break;
+                          case 4:
+                                  randE.runAway();
+                                  break;
+                          case 5:
+                                  randE.findFuel();
+                                  break;
+                    }
               }
         }
         newU.universe.set(0,p);
+        fuelLabel.setText("Light Years Left: "+ playerInfo.myShip.lightYearsLeft);
         //updateMarket();
     }
     
@@ -691,6 +700,7 @@ public class FXMLDocumentController implements Initializable {
       int narcotics = 0;
       int robots = 0;
       int food = 0;
+      int fuel = 0;
       int total;
       int cost;
       try {
@@ -702,6 +712,13 @@ public class FXMLDocumentController implements Initializable {
               }catch(Exception e)
               {
                   water = 0;
+              }
+          }
+          if (!fuelNum.getText().equals("")) { 
+              try {
+                  fuel = Integer.parseInt(fuelNum.getText());
+              } catch (Exception e) {
+                  fuel = 0;
               }
           }
           if(!fursNum.getText().equals(""))
@@ -799,7 +816,8 @@ public class FXMLDocumentController implements Initializable {
                   + games*newU.universe.get(0).market.gamesPrice + food*newU.universe.get(0).market.foodPrice 
                   + medicine*newU.universe.get(0).market.machinesPrice + robots*newU.universe.get(0).market.robotsPrice 
                   + narcotics*newU.universe.get(0).market.narcoticsPrice + ores*newU.universe.get(0).market.oresPrice 
-                  + machines*newU.universe.get(0).market.machinesPrice + water*newU.universe.get(0).market.waterPrice;
+                  + machines*newU.universe.get(0).market.machinesPrice + water*newU.universe.get(0).market.waterPrice
+                  + fuel * newU.universe.get(0).market.fuelPrice;
           if(playerInfo.myShip.validBuy(total, cost, playerInfo.credits)&&newU.universe.get(0).market.isValid(water,furs,food,ores,games,firearms,medicine,machines,narcotics,robots))
           {
               playerInfo.myShip.count += total;
@@ -824,6 +842,7 @@ public class FXMLDocumentController implements Initializable {
               playerInfo.myShip.machines += machines;
               playerInfo.myShip.narcotics += narcotics;
               playerInfo.myShip.robots += robots;
+              playerInfo.myShip.lightYearsLeft += fuel;
 
 
           }
@@ -884,6 +903,8 @@ public class FXMLDocumentController implements Initializable {
             medicineQuantityID.setText(""+newU.universe.get(0).market.medicineQuant);
             foodQuantityID.setText(""+newU.universe.get(0).market.foodQuant);
             machinesQuantityID.setText(""+newU.universe.get(0).market.machinesQuant);
+            fuelQuantityID.setText("Unlimited");
+            fuelPriceID.setText("" + newU.universe.get(0).market.fuelPrice);
     }
     @FXML
     private void minusSkill1(ActionEvent event) throws Exception{
